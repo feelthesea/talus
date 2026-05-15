@@ -1,0 +1,118 @@
+:root {
+  --green-900: #173404;
+  --green-800: #27500A;
+  --green-700: #3B6D11;
+  --green-600: #639922;
+  --green-200: #C0DD97;
+  --green-100: #EAF3DE;
+  --amber-600: #BA7517;
+  --amber-100: #FAEEDA;
+  --red-600: #A32D2D;
+  --red-100: #FCEBEB;
+  --gray-900: #1a1a18;
+  --gray-800: #2C2C2A;
+  --gray-600: #5F5E5A;
+  --gray-300: #B4B2A9;
+  --gray-100: #F1EFE8;
+  --gray-50: #FAFAF8;
+
+  --bg: var(--gray-50);
+  --bg2: #fff;
+  --surface: #fff;
+  --surface2: var(--gray-100);
+  --border: rgba(0,0,0,0.1);
+  --border2: rgba(0,0,0,0.18);
+  --text: #1a1a18;
+  --muted: #5F5E5A;
+  --hint: #888780;
+
+  --brand: var(--green-800);
+  --brand-mid: var(--green-600);
+  --brand-light: var(--green-100);
+  --brand-text: var(--green-900);
+  --accent: var(--amber-600);
+  --accent-light: var(--amber-100);
+  --danger: var(--red-600);
+  --danger-light: var(--red-100);
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+
+  --max-w: 680px;
+  --font: -apple-system, 'SF Pro Text', 'Helvetica Neue', sans-serif;
+  --font-mono: 'SF Mono', 'Fira Code', monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f1009;
+    --bg2: #161710;
+    --surface: #1e2015;
+    --surface2: #252718;
+    --border: rgba(255,255,255,0.09);
+    --border2: rgba(255,255,255,0.16);
+    --text: #eeeee8;
+    --muted: #9a9990;
+    --hint: #6b6a64;
+    --brand: var(--green-600);
+    --brand-mid: var(--green-200);
+    --brand-light: rgba(59,109,17,0.2);
+    --brand-text: var(--green-200);
+    --accent: #EF9F27;
+    --accent-light: rgba(186,117,23,0.15);
+    --danger-light: rgba(163,45,45,0.18);
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { font-size: 16px; -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+a { color: var(--brand-mid); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+input[type="number"], input[type="text"], select {
+  width: 100%;
+  padding: 0.55rem 0.75rem;
+  background: var(--surface);
+  border: 0.5px solid var(--border2);
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  color: var(--text);
+  font-family: var(--font);
+  outline: none;
+  transition: border-color 0.15s;
+  -webkit-appearance: none;
+}
+input:focus, select:focus { border-color: var(--brand-mid); }
+
+button {
+  font-family: var(--font);
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: opacity 0.15s, transform 0.1s;
+}
+button:active { transform: scale(0.98); }
+button:disabled { opacity: 0.45; cursor: not-allowed; }
+
+.container {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+@media (max-width: 480px) {
+  html { font-size: 15px; }
+  .container { padding: 0 0.75rem; }
+}

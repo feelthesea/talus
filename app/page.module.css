@@ -1,0 +1,162 @@
+.loadingScreen {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.spinner {
+  width: 28px; height: 28px;
+  border: 2px solid var(--border2);
+  border-top-color: var(--brand-mid);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.main {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 3rem 0;
+}
+
+.container {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 3rem;
+}
+.logoMark {
+  width: 36px; height: 36px;
+  background: var(--brand);
+  color: #fff;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  flex-shrink: 0;
+}
+.logoName {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: -0.3px;
+}
+.logoSub {
+  font-size: 11px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.hero { margin-bottom: 2.5rem; }
+.heroTitle {
+  font-size: clamp(2rem, 6vw, 2.75rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+  color: var(--text);
+  margin-bottom: 1rem;
+}
+.heroBody {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.7;
+  max-width: 440px;
+}
+
+.pillars {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin-bottom: 2.5rem;
+  padding: 1.25rem;
+  background: var(--surface);
+  border: 0.5px solid var(--border2);
+  border-radius: var(--radius-lg);
+}
+.pillar {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.pillarIcon {
+  font-size: 16px;
+  color: var(--brand-mid);
+  flex-shrink: 0;
+  margin-top: 1px;
+  width: 20px;
+}
+.pillarText {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.55;
+}
+.pillarText strong {
+  display: block;
+  color: var(--text);
+  font-weight: 500;
+  margin-bottom: 1px;
+}
+
+.errorBox {
+  padding: 0.75rem 1rem;
+  background: var(--danger-light);
+  border-left: 3px solid var(--danger);
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  color: var(--danger);
+  margin-bottom: 1rem;
+}
+
+.authSection { display: flex; flex-direction: column; gap: 0.75rem; }
+
+.stravaBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 0.9rem;
+  background: #FC4C02;
+  color: #fff;
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: opacity 0.15s;
+}
+.stravaBtn:hover { opacity: 0.88; text-decoration: none; }
+.stravaBtn svg { width: 18px; height: 18px; fill: #fff; }
+
+.demoBtn {
+  padding: 0.8rem;
+  background: transparent;
+  border: 0.5px solid var(--border2);
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  color: var(--text);
+  letter-spacing: 0;
+}
+.demoBtn:hover { background: var(--surface2); }
+
+.authNote {
+  font-size: 11px;
+  color: var(--hint);
+  text-align: center;
+}
+
+@media (max-width: 480px) {
+  .main { padding: 2rem 0; align-items: flex-start; }
+  .hero { margin-bottom: 2rem; }
+  .pillars { margin-bottom: 2rem; }
+}

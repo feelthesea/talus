@@ -1,0 +1,29 @@
+{
+  "name": "talus",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@auth/supabase-adapter": "^1.11.2",
+    "@supabase/supabase-js": "^2.105.4",
+    "@types/bcryptjs": "^2.4.6",
+    "bcryptjs": "^3.0.3",
+    "chart.js": "^4.4.1",
+    "iron-session": "^8.0.1",
+    "next": "14.2.5",
+    "next-auth": "^5.0.0-beta.31",
+    "next-intl": "^4.12.0",
+    "react": "^18",
+    "react-dom": "^18"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "typescript": "^5"
+  }
+}

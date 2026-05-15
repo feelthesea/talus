@@ -1,0 +1,394 @@
+/* Race Mode — forced dark, high contrast, optimised for fatigue readability */
+
+.page {
+  --profile-gray: #666;
+  --profile-active: #97C459;
+  --bg: #0a0c08;
+  --surface: #141710;
+  --surface2: #1c2015;
+  --border: rgba(255,255,255,0.08);
+  --text: #f0f0ea;
+  --muted: #888880;
+  --hint: #555550;
+  --green: #97C459;
+  --green-bright: #b8e070;
+  --amber: #EF9F27;
+  --red: #E05555;
+
+  min-height: 100dvh;
+  background: var(--bg);
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  font-family: -apple-system, 'SF Pro Text', 'Helvetica Neue', sans-serif;
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: pan-y;
+}
+
+/* ── Loading ── */
+.loading {
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0a0c08;
+}
+.spinner {
+  width: 32px; height: 32px;
+  border: 2px solid #333;
+  border-top-color: #97C459;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── Top bar ── */
+.topBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem 0.5rem;
+  flex-shrink: 0;
+}
+.exitBtn, .wakeLockBtn {
+  width: 36px; height: 36px;
+  background: var(--surface2);
+  border: 0.5px solid var(--border);
+  border-radius: 50%;
+  color: var(--muted);
+  font-size: 14px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: color 0.15s;
+}
+.exitBtn:hover, .wakeLockBtn:hover { color: var(--text); }
+.wakeLockOn { color: var(--amber) !important; border-color: var(--amber); }
+.raceLabel {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+}
+
+/* ── Elevation profile ── */
+.profileWrap {
+  height: 140px;
+  flex-shrink: 0;
+  padding: 0 0.5rem;
+}
+
+/* ── Segment dots ── */
+.segDots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 0.5rem 1rem;
+  flex-shrink: 0;
+}
+.segDot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--border);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.2s;
+}
+.segDotActive {
+  width: 16px;
+  border-radius: 3px;
+  background: var(--green);
+}
+.segDotDone { background: var(--hint); }
+
+/* ── Segment content — slides ── */
+.segContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem 1.25rem 1rem;
+  animation: slideIn 0.28s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  overflow: hidden;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+.slideOutLeft {
+  animation: slideOutLeft 0.28s cubic-bezier(0.55, 0, 0.75, 0) forwards;
+}
+.slideOutRight {
+  animation: slideOutRight 0.28s cubic-bezier(0.55, 0, 0.75, 0) forwards;
+}
+@keyframes slideOutLeft {
+  to { opacity: 0; transform: translateX(-40px); }
+}
+@keyframes slideOutRight {
+  to { opacity: 0; transform: translateX(40px); }
+}
+
+/* ── Segment header ── */
+.segHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 1rem;
+}
+.segFrom {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+}
+.segArrow {
+  font-size: 13px;
+  color: var(--hint);
+}
+.segTo {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  flex: 1;
+}
+.segBadge {
+  font-size: 11px;
+  color: var(--hint);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Three primary data elements ── */
+.triData {
+  display: flex;
+  align-items: stretch;
+  background: var(--surface);
+  border: 0.5px solid var(--border);
+  border-radius: 14px;
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+.triBlock {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 0.5rem;
+  gap: 4px;
+}
+.triDivider {
+  width: 0.5px;
+  background: var(--border);
+  margin: 0.75rem 0;
+}
+.triVal {
+  font-size: clamp(22px, 6vw, 28px);
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+.triValHr { color: var(--amber); }
+.triKey {
+  font-size: 10px;
+  color: var(--hint);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-align: center;
+}
+
+/* ── Fuel section ── */
+.fuelSection {
+  background: var(--surface);
+  border: 0.5px solid var(--border);
+  border-radius: 12px;
+  padding: 0.85rem 1rem;
+  margin-bottom: 0.75rem;
+}
+.fuelLabel {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--hint);
+  margin-bottom: 0.6rem;
+}
+.fuelPills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 0.5rem;
+}
+.fuelPill {
+  font-size: 14px;
+  font-weight: 700;
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  color: var(--green-bright);
+  background: rgba(151, 196, 89, 0.1);
+  border: 0.5px solid rgba(151, 196, 89, 0.3);
+  border-radius: 6px;
+  padding: 4px 10px;
+  letter-spacing: 0.02em;
+}
+.fuelCarb {
+  font-size: 11px;
+  color: var(--muted);
+}
+
+/* ── Risk note ── */
+.riskNote {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  background: rgba(239, 159, 39, 0.08);
+  border: 0.5px solid rgba(239, 159, 39, 0.3);
+  border-radius: 10px;
+  padding: 0.7rem 0.85rem;
+  font-size: 12px;
+  color: var(--amber);
+  line-height: 1.5;
+  margin-bottom: 0.75rem;
+}
+.riskIcon { flex-shrink: 0; font-size: 14px; }
+
+/* ── Race footer stats ── */
+.raceFooter {
+  display: flex;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: 0.75rem;
+  border-top: 0.5px solid var(--border);
+}
+.footerStat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+.footerVal {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+}
+.footerKey {
+  font-size: 10px;
+  color: var(--hint);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* ── Swipe hint ── */
+.swipeHint {
+  position: fixed;
+  bottom: 1.25rem;
+  left: 1.25rem;
+  right: 1.25rem;
+  display: flex;
+  font-size: 11px;
+  color: var(--hint);
+  pointer-events: none;
+}
+
+/* ── Safe area (iPhone notch) ── */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .page {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  .swipeHint {
+    bottom: calc(1.25rem + env(safe-area-inset-bottom));
+  }
+}
+
+/* ── Landscape adjustment ── */
+@media (orientation: landscape) and (max-height: 500px) {
+  .profileWrap { height: 80px; }
+  .triVal { font-size: 20px; }
+  .segContent { padding: 0.25rem 1rem 0.5rem; }
+}
+
+/* ── GPS indicator ── */
+.topCenter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+.gpsIndicator {
+  font-size: 10px;
+  color: var(--hint);
+  letter-spacing: 0.06em;
+  transition: color 0.3s;
+}
+.gpsNear { color: var(--green); }
+.gpsError { font-size: 10px; color: var(--red); }
+
+/* ── Start Race overlay ── */
+.startOverlay {
+  position: absolute;
+  bottom: 5rem;
+  left: 1.25rem;
+  right: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+}
+.startBtn {
+  width: 100%;
+  padding: 1rem;
+  background: transparent;
+  border: 1.5px solid var(--green);
+  border-radius: 12px;
+  color: var(--green);
+  font-size: 15px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  letter-spacing: 0.03em;
+  transition: background 0.15s;
+}
+.startBtn:hover, .startBtn:active {
+  background: rgba(151, 196, 89, 0.12);
+}
+.startIcon { font-size: 18px; animation: pulse 2s ease-in-out infinite; }
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+.startNote {
+  font-size: 11px;
+  color: var(--hint);
+  text-align: center;
+  line-height: 1.5;
+}
+
+/* ── Silent recalc toast ── */
+.recalcToast {
+  position: fixed;
+  top: 4.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(151, 196, 89, 0.12);
+  border: 0.5px solid rgba(151, 196, 89, 0.4);
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 12px;
+  color: var(--green);
+  white-space: nowrap;
+  animation: fadeInOut 3.5s ease forwards;
+  pointer-events: none;
+  z-index: 50;
+}
+@keyframes fadeInOut {
+  0%   { opacity: 0; transform: translateX(-50%) translateY(-6px); }
+  15%  { opacity: 1; transform: translateX(-50%) translateY(0); }
+  75%  { opacity: 1; }
+  100% { opacity: 0; }
+}
