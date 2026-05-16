@@ -12,8 +12,8 @@ npm install
 ### 2. Configure environment variables
 Edit `.env.local`:
 ```
-STRAVA_CLIENT_ID=244814
-STRAVA_CLIENT_SECRET=a8afacabbf4551781b818526e788b5bd20230c26
+STRAVA_CLIENT_ID=your_strava_client_id
+STRAVA_CLIENT_SECRET=your_strava_client_secret
 NEXT_PUBLIC_BASE_URL=http://localhost:3000
 ANTHROPIC_API_KEY=sk-ant-...your key here...
 SESSION_SECRET=some-random-32-char-string-here-ok
