@@ -10,6 +10,7 @@
   "dependencies": {
     "@auth/supabase-adapter": "^1.11.2",
     "@supabase/supabase-js": "^2.105.4",
+    "@swc/helpers": "^0.5.21",
     "@types/bcryptjs": "^2.4.6",
     "bcryptjs": "^3.0.3",
     "chart.js": "^4.4.1",
