@@ -3,3 +3,6 @@ builder = "NIXPACKS"
 
 [build.nixpacksPlan.phases.install]
 cmds = ["npm install --legacy-peer-deps"]
+
+[build.nixpacksPlan.providers.node]
+version = "20"
