@@ -1,8 +1,7 @@
 [build]
 builder = "NIXPACKS"
+installCommand = "npm install --legacy-peer-deps"
+buildCommand = "npm run build"
 
-[build.nixpacksPlan.phases.install]
-cmds = ["npm install --legacy-peer-deps"]
-
-[build.nixpacksPlan.providers.node]
-version = "20"
+[deploy]
+startCommand = "npm run start"
